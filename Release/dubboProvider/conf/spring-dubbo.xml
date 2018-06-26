@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="platform_provider"  />
+	<!-- 使用zookeeper注册中心暴露服务地址 -->  
+	<dubbo:registry address="zookeeper://127.0.0.1:2171" check="false" />
+	<!-- 用dubbo协议在20880端口暴露服务 -->  
+	<dubbo:protocol name="dubbo" port="20880" />
+	<!--<dubbo:protocol name="webservice" port="8085" server="servlet" />-->
+	<!--<dubbo:protocol name="webservice" port="8085" server="servlet" contextpath="CommonWebInfo" />-->
+	<!--<dubbo:protocol name="hessian" port="8083" server="servlet" contextpath="CommonWebInfo" />-->
+	<!--<dubbo:protocol host="192.168.30.111" name="dubbo" port="20880" />-->
+	<!--<dubbo:protocol name="http" port="9090" server="servlet" contextpath="CommonWebInfo" />-->
+	<!--超时协议-->
+	<dubbo:provider timeout="5000" retries="0"/>
+	<!-- 声明需要暴露的服务接口 -->
+	<dubbo:service interface="com.common.service.CoreService" ref="coreService" />
+	<dubbo:service interface="com.common.service.CommonService" ref="commonService" />
+	<dubbo:service interface="com.common.service.WorkflowService" ref="workflowService" />
+	<dubbo:service interface="com.common.service.QuartzScheduleService" ref="quartzScheduleService" />
+	<dubbo:service interface="com.common.service.UserService" ref="userService" />
+	<dubbo:service interface="com.common.service.UserRoleService" ref="userRoleService" />
+</beans>

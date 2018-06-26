@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://camel.apache.org/schema/spring
+	http://camel.apache.org/schema/spring/camel-spring.xsd
+	http://www.springframework.org/schema/jms
+    http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
+    http://activemq.apache.org/schema/core
+    http://activemq.apache.org/schema/core/activemq-core-5.13.2.xsd
+	"
+	default-autowire="byName"  default-init-method="init">
+	<!-- 服务监听类 -->
+	<bean id="queueMessageListListener" class="com.common.jms.listenercontainer.queueMessageListListener" init-method="init" destroy-method="destroy" parent="applicationContextHelper">
+		<property name="servertype" value="dubbo" />
+	</bean>
+	<bean id="topicMessageListListener" class="com.common.jms.listenercontainer.topicMessageListListener" init-method="init" destroy-method="destroy" parent="applicationContextHelper">
+		<property name="servertype" value="dubbo" />
+	</bean>
+	<!-- 服务类 -->
+	<bean id="queueSenderService" class="com.common.jms.producer.queue.QueueSenderServiceImpl" />
+	<bean id="topicSenderService" class="com.common.jms.producer.topic.TopicSenderServiceImpl" />
+</beans>
