@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.common.mappers.CommMapper">
+	<select id='commQuery' parameterType="string" resultType="map">
+		${sql}
+	</select>
+	<select id='commQueryCount' parameterType="string" resultType="Integer">
+		select count(*) as countInfo from(
+			${sql}
+		) as t
+	</select>
+	<select id='commQueryInfo' parameterType="string" resultType="map">
+		select ${coll} from ${table}
+		<if test="where != null">  
+		where ${where}
+		</if>
+		<if test="order != null">  
+        order by ${order}  
+    	</if>
+	</select>
+	<select id='commGetTableColKey' parameterType="string" resultType="com.common.entity.form.PreKey">
+		select CM_ID as id,CM_Value as keyinfo,CM_Number as num from sc_systemcode
+		where CM_Table=#{table} and CM_Key=#{key}
+	</select>
+	<update id='commSetTableColKey' parameterType="string">
+		update sc_systemcode
+		set CM_Number=${num}
+		where CM_ID=#{id}
+	</update>
+	<update id="commUpdateObj" parameterType="string">
+		update ${table}
+		set ${values}
+		where (1=1) ${where}
+	</update>
+	<insert id="commInsertObj" parameterType="string">
+		insert into ${table}(${coll})
+		values(${values})
+	</insert>
+</mapper>

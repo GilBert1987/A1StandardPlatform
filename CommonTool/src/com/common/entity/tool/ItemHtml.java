@@ -1,0 +1,70 @@
+package com.common.entity.tool;
+
+import java.io.Serializable;
+
+public class ItemHtml implements Serializable {
+	private String code;
+	private String name;
+	private String url;
+	private String btnclass;
+	private String icon;
+	private String iconstyle;
+	private String order;
+	private String isshow;
+	private String isselect;
+	
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public String getOrder() {
+		return order;
+	}
+	public void setOrder(String order) {
+		this.order = order;
+	}
+	public String getIsshow() {
+		return isshow;
+	}
+	public void setIsshow(String isshow) {
+		this.isshow = isshow;
+	}
+	public String getIsselect() {
+		return isselect;
+	}
+	public void setIsselect(String isselect) {
+		this.isselect = isselect;
+	}
+	public String getBtnclass() {
+		return btnclass;
+	}
+	public void setBtnclass(String btnclass) {
+		this.btnclass = btnclass;
+	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+	public String getIconstyle() {
+		return iconstyle;
+	}
+	public void setIconstyle(String iconstyle) {
+		this.iconstyle = iconstyle;
+	}
+}

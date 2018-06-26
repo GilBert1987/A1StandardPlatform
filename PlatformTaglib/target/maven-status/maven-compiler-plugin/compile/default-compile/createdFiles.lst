@@ -1,0 +1,9 @@
+com\platform\taglib\ReportTable.class
+com\platform\taglib\OrgSelect.class
+com\platform\taglib\QueryTable.class
+com\platform\taglib\OrgPostSelect.class
+com\platform\taglib\GenericTable.class
+com\platform\taglib\UserSelect.class
+com\platform\taglib\RoleSelect.class
+com\platform\taglib\PostSelect.class
+com\platform\taglib\RoleAuthorization.class

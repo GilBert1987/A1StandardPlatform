@@ -1,0 +1,3 @@
+com\common\service\impl\UserRoleServiceImpl.class
+com\common\dao\ShiroDao.class
+com\common\service\impl\UserServiceImpl.class

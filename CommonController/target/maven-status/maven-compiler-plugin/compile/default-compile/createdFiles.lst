@@ -1,0 +1,7 @@
+com\common\controller\LoginController.class
+com\common\controller\PlatformController.class
+com\common\controller\UnauthorizedController.class
+com\common\controller\SafeguardControll.class
+com\common\controller\FileController.class
+com\common\controller\AjaxController.class
+com\common\controller\IndexController.class

@@ -1,0 +1,8 @@
+com\common\entity\login\Role.class
+com\common\entity\login\UserRole.class
+com\common\entity\login\UserOrg.class
+com\common\entity\login\Post.class
+com\common\entity\login\UserPost.class
+com\common\entity\login\User.class
+com\common\entity\login\Organization.class
+com\common\entity\login\HashPassword.class

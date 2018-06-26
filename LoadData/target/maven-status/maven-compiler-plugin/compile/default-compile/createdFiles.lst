@@ -1,0 +1,16 @@
+com\platform\data\MenuDataLoad.class
+com\platform\data\BigDataLoad.class
+com\platform\data\QuartzDataLoad.class
+com\platform\data\SystemPropertyDataLoad.class
+com\platform\data\FormDataLoad.class
+com\platform\data\WorkFlowConfigLoad.class
+com\platform\data\QueryDataLoad.class
+com\platform\data\FrameDataLoad.class
+com\platform\data\ActivitiPicDataLoad.class
+com\platform\data\ActivitiRunDataLoad.class
+com\platform\data\TreeDataLoad.class
+com\platform\data\ToolDataLoad.class
+com\platform\data\UserInfoFormDataLoad.class
+com\platform\data\QueryDataLoad$1.class
+com\platform\data\UserFormDataLoad.class
+com\platform\data\ActivitiDataLoad.class

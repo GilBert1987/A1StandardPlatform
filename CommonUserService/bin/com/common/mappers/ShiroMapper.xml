@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.common.mappers.ShiroMapper">
+	<select id='getUser' parameterType="string" resultType="com.common.entity.login.User">
+		SELECT
+		  id,
+		  create_time,
+		  PASSWORD,
+		  salt,
+		  STATUS,
+		  username,
+		  email,
+		  realname,
+		  phone,
+		  org_id
+		FROM sc_user
+		where username=#{username}
+	</select>
+	<select id='getUserPermissionList' parameterType="string" resultType="map">
+		SELECT DISTINCT sc_role_permission.permission
+		FROM sc_role_permission
+		JOIN sc_user_role
+		ON sc_role_permission.`role_id`=sc_user_role.`role_id`
+		WHERE sc_user_role.`user_id`=#{userid}
+	</select>
+</mapper>

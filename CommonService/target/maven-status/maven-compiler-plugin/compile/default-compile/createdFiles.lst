@@ -1,0 +1,12 @@
+com\common\service\TagShow.class
+com\common\service\LocalCommonService.class
+com\common\service\WorkflowService.class
+com\common\service\FilterChainDefinitionsService.class
+com\common\service\QueueSenderService.class
+com\common\service\UserRoleService.class
+com\common\service\LocalWorkflowService.class
+com\common\service\CoreService.class
+com\common\service\FlowAbleService.class
+com\common\service\TopicSenderService.class
+com\common\service\QuartzScheduleService.class
+com\common\service\UserService.class

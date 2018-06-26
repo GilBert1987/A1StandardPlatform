@@ -1,0 +1,25 @@
+#surefire
+#Wed Mar 21 14:46:00 CST 2018
+testClassesDirectory=D\:\\project\\code\\CommonUnitService\\target\\test-classes
+classPathUrl.4=D\:\\eclipse\\repository\\org\\mybatis\\mybatis\\3.2.7\\mybatis-3.2.7.jar
+forkMode=once
+classPathUrl.3=D\:\\eclipse\\repository\\com\\common\\CommonInterFace\\0.0.1-SNAPSHOT\\CommonInterFace-0.0.1-SNAPSHOT.jar
+classPathUrl.2=D\:\\eclipse\\repository\\com\\common\\CommonQuery\\0.0.1-SNAPSHOT\\CommonQuery-0.0.1-SNAPSHOT.jar
+useManifestOnlyJar=true
+classPathUrl.1=D\:\\project\\code\\CommonUnitService\\target\\classes
+reportsDirectory=D\:\\project\\code\\CommonUnitService\\target\\surefire-reports
+classPathUrl.0=D\:\\project\\code\\CommonUnitService\\target\\test-classes
+providerConfiguration=org.apache.maven.surefire.junit.JUnit3Provider
+testSuiteDefinitionTestSourceDirectory=D\:\\project\\code\\CommonUnitService\\src\\test\\java
+surefireClassPathUrl.1=D\:\\eclipse\\repository\\org\\apache\\maven\\surefire\\surefire-api\\2.10\\surefire-api-2.10.jar
+surefireClassPathUrl.0=D\:\\eclipse\\repository\\org\\apache\\maven\\surefire\\surefire-junit3\\2.10\\surefire-junit3-2.10.jar
+runOrder=filesystem
+useSystemClassLoader=true
+excludes0=**/*$*
+isTrimStackTrace=true
+enableAssertions=true
+includes2=**/*TestCase.java
+failIfNoTests=false
+includes1=**/*Test.java
+includes0=**/Test*.java
+childDelegation=false

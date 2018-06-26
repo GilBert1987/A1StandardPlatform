@@ -1,0 +1,4 @@
+com\common\db\handler\CustomerMapHandler.class
+com\common\db\template\DbutilsTemplate.class
+com\common\db\transactionmanager\DSTransactionManager.class
+com\common\db\support\CustomerContextHolder.class
