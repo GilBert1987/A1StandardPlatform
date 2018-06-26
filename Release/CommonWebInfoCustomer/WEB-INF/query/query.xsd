@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://commonplatform.com/1.0/query.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="query">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="sqlinfo"/>
+        <xs:element ref="defaultparm"/>
+        <xs:element ref="primarykey"/>
+        <xs:element ref="orderkey"/>
+        <xs:element ref="initsql"/>
+        <xs:element ref="choicetime"/>
+        <xs:element ref="pagestyle"/>
+        <xs:element ref="jsfunction"/>
+        <xs:element ref="columns"/>
+        <xs:element ref="buttons"/>
+        <xs:element ref="remark"/>
+      </xs:sequence>
+      <xs:attribute name="code" use="required" type="xs:NCName"/>
+      <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+      <xs:attribute name="filedir" use="required" type="xs:NCName"/>
+      <xs:attribute name="head" use="required" type="xs:NCName"/>
+      <xs:attribute name="lastmodifiedtime" use="required" type="xs:integer"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="sysid" use="required" type="xs:NCName"/>
+      <xs:attribute name="title" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sqlinfo" type="xs:string"/>
+  <xs:element name="defaultparm">
+    <xs:complexType>
+      <xs:attribute name="value" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="primarykey">
+    <xs:complexType>
+      <xs:attribute name="key" use="required" type="xs:NCName"/>
+      <xs:attribute name="type" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="orderkey">
+    <xs:complexType>
+      <xs:attribute name="value" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="initsql">
+    <xs:complexType mixed="true">
+      <xs:attribute name="type" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="choicetime">
+    <xs:complexType>
+      <xs:attribute name="pagenum" use="required" type="xs:integer"/>
+      <xs:attribute name="type" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pagestyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="show"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="show">
+    <xs:complexType>
+      <xs:attribute name="isshow" use="required" type="xs:integer"/>
+      <xs:attribute name="type" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="jsfunction">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="columns">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="column"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="column">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="search"/>
+        <xs:element ref="title"/>
+        <xs:element ref="unit"/>
+        <xs:element ref="quick"/>
+      </xs:sequence>
+      <xs:attribute name="grouptype" use="required" type="xs:integer"/>
+      <xs:attribute name="key" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="search">
+    <xs:complexType mixed="true">
+      <xs:attribute name="datatype" use="required"/>
+      <xs:attribute name="isshow" use="required" type="xs:integer"/>
+      <xs:attribute name="order" use="required" type="xs:integer"/>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="title">
+    <xs:complexType>
+      <xs:attribute name="isedit" use="required" type="xs:integer"/>
+      <xs:attribute name="isshow" use="required" type="xs:integer"/>
+      <xs:attribute name="order" use="required" type="xs:integer"/>
+      <xs:attribute name="width" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="unit">
+    <xs:complexType>
+      <xs:attribute name="align" use="required" type="xs:NCName"/>
+      <xs:attribute name="merge" use="required" type="xs:integer"/>
+      <xs:attribute name="mergecolumn" use="required"/>
+      <xs:attribute name="mergerefer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="quick">
+    <xs:complexType>
+      <xs:attribute name="isshow" use="required" type="xs:integer"/>
+      <xs:attribute name="showname" use="required" type="xs:integer"/>
+      <xs:attribute name="showoperation" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="buttons">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="button"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="button">
+    <xs:complexType>
+      <xs:attribute name="icon" use="required"/>
+      <xs:attribute name="jsclick" use="required"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="order" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="remark">
+    <xs:complexType/>
+  </xs:element>
+</xs:schema>

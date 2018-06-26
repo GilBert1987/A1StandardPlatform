@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://commonplatform.com/1.0/tool.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="tool">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="items"/>
+        <xs:element ref="styles"/>
+        <xs:element ref="remark"/>
+      </xs:sequence>
+      <xs:attribute name="code" use="required" type="xs:NCName"/>
+      <xs:attribute name="filedir" use="required" type="xs:NCName"/>
+      <xs:attribute name="lastmodifiedtime" use="required" type="xs:integer"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="items">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="item"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="styles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="show"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="show">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="item"/>
+        <xs:element ref="remark"/>
+      </xs:sequence>
+      <xs:attribute name="code" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:attribute name="code" use="required" type="xs:NCName"/>
+      <xs:attribute name="isselect" type="xs:boolean"/>
+      <xs:attribute name="isshow" type="xs:boolean"/>
+      <xs:attribute name="name" type="xs:NCName"/>
+      <xs:attribute name="order" type="xs:integer"/>
+      <xs:attribute name="url"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="remark">
+    <xs:complexType/>
+  </xs:element>
+</xs:schema>

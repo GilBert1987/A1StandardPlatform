@@ -1,0 +1,51 @@
+﻿<!-- the scan=true indicates an automatically reloading while modification -->
+<configuration scan="true">
+  <!-- Setting the context name is a simple and straightforward method in order to distinguish between multiple 
+        applications logging to the same target -->
+  <contextName>edrop_web_server</contextName>
+  
+  <!-- set a variable refered to the path of log -->
+  <property name="LOG_HOME" value="${catalina.base}/logs" />
+  
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n %ex</pattern>
+    </encoder>
+  </appender>
+
+<!--  
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${LOG_HOME}/server.log</file>
+
+    <encoder>
+      <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+    </encoder>
+  </appender>
+  -->
+  <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- <Encoding>UTF-8</Encoding> -->
+        <File>${LOG_HOME}/server.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+                <FileNamePattern>${LOG_HOME}/server.%i.log.zip</FileNamePattern>
+                <MinIndex>1</MinIndex>
+                <MaxIndex>20</MaxIndex>
+        </rollingPolicy>
+          <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                <MaxFileSize>20MB</MaxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%date [%thread] %-5level %logger{10} [%file:%line] %msg%n %ex</pattern>
+        </layout>
+  </appender>
+  
+  <!-- the name is the package name -->
+  <logger name="com.hanborq.edrop.user.controller" level="INFO"/>
+  
+  <root level="debug">
+    <!--<appender-ref ref="STDOUT"/>-->
+    <!-- <appender-ref ref="FILE" /> -->
+    <appender-ref ref="RollingFile" />
+  </root>
+</configuration>

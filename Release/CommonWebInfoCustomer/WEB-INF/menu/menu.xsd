@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://commonplatform.com/1.0/menu.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="menu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="shortcuts"/>
+        <xs:element ref="submenus"/>
+        <xs:element ref="remark"/>
+      </xs:sequence>
+      <xs:attribute name="code" use="required" type="xs:NCName"/>
+      <xs:attribute name="filedir" use="required" type="xs:NCName"/>
+      <xs:attribute name="lastmodifiedtime" use="required" type="xs:integer"/>
+      <xs:attribute name="title" use="required" type="xs:NCName"/>
+      <xs:attribute name="titlepic" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="shortcuts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="shortcut"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="shortcut">
+    <xs:complexType>
+      <xs:attribute name="code" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="order" use="required" type="xs:integer"/>
+      <xs:attribute name="pic" use="required"/>
+      <xs:attribute name="url" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="submenus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="submenu"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="submenu">
+    <xs:complexType>
+      <xs:attribute name="code" use="required" type="xs:NCName"/>
+      <xs:attribute name="isshow" use="required" type="xs:integer"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="opentype" use="required"/>
+      <xs:attribute name="order" use="required" type="xs:integer"/>
+      <xs:attribute name="parentcode" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="pic" use="required"/>
+      <xs:attribute name="url" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="remark">
+    <xs:complexType/>
+  </xs:element>
+</xs:schema>

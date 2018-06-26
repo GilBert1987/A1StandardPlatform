@@ -1,0 +1,14 @@
+增加:new.gif
+删除:delete.gif
+修改:edit.gif
+保存:save.gif
+返回:back.gif
+关闭:close.gif
+帮助:help.gif
+树展现:show.gif
+树合拢:hidden.gif
+查询:search.gif
+确定:do.gif
+撤销:undo.gif
+权限:key.gif
+刷新:refresh.gif

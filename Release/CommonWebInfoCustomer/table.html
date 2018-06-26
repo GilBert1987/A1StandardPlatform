@@ -1,0 +1,135 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>员工用餐报表(动态列)</title>
+    <link rel="shortcut icon" href="favicon.ico"> 
+	<link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="css/bootstrap-table.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="css/query.css?v=1.02" rel="stylesheet">
+	<link rel="stylesheet" type="text/css"	href="css/jquery-webox.css" />
+	<script async src="js/analytics.js"></script>
+	<script src="assets/js/skins.min.js"></script>
+	<script type="text/javascript" src="js/jquery.js?ver=1.1"></script>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/html5shiv.min.js"></script>
+	<script type="text/javascript" src="js/respond.min.js"></script>
+	<![endif]-->
+	<link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <script type="text/javascript" src="js/plugins/layer/layer.min.js"></script>
+	<script type="text/javascript" src="js/jquery-webox.js"></script>
+	<script type="text/javascript" src="js/common.js?v=1.00"></script>
+	<script type="text/javascript" src="js/query.js?v=1.36"></script>
+	<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-table.min.js"></script>
+	<script src="js/bootstrap-table-locale-all.min.js"></script>
+	<link href="js/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css" />
+	
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox" id="pageBody">
+                    <div class="ibox-content">
+                         <div class="jqGrid_wrapper">
+						   <div  class="ui-jqgrid ">
+							<div class="ui-jqgrid-view table-responsive">
+                            	
+								<div class="widgetQuery divTitle widget-header bg-palegreen" >
+									<h4 class="widget-caption" >员工用餐报表(动态列)</h4>
+									<div class="queryButtonGroup" >
+									 <div class="btn-group"></div>
+									 </div>
+                                     
+								</div>
+								 <div class="widgetQuery"></div>
+							  <form id="pageForm" action="/CommonWebInfo/platform/query/SQ_2017121815080001.query" method="post">
+								<input type="hidden" id="pageNum" name="page.pageNum" value="1" />
+								<input type="hidden" id="numPerPage" name="page.numPerPage" value="50" />
+								<input type="hidden" id="orderField" name="page.orderField" value="id,name" />
+								<input type="hidden" id="querySearchName" name="querySearchName" value="" />
+								<input type="hidden" id="querySearchExpree" name="querySearchExpree" value="" />
+								<input type="hidden" id="querySearchValue" name="querySearchValue" value="" />
+								<input type="hidden" id="viewpath" name="viewpath" value="SQ_2017121815080001" />
+                                <input type="hidden" id="queryString" value="" />
+								<!--  Start查询条  -->
+								
+									<div class="widgetQuery widget-header"
+										
+										>
+										<div class="form-inline searchQuickItem" 
+											 style="width:100%;"> <input type="input" class='form-control' id="begin_datetime" name="begin_datetime" value="2017-12-18 17:4:10" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false,readOnly:true});" style='background: #fff url(js/My97DatePicker/skin/datePicker.gif) no-repeat right;border: #999 1px solid;' /><input type="input" class='form-control' id="end_datetime" name="end_datetime" value="2017-12-18 18:4:10" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false,readOnly:true});" style='background: #fff url(js/My97DatePicker/skin/datePicker.gif) no-repeat right;border: #999 1px solid;' /> 
+										</div>
+										<div class="form-inline searchItem" >
+												<div class='form-group'><select id='searchName' class='form-control' onchange='changeSearchName(this);'><option value=''>请选择</option><option value='{\"key\":\"name\",\"sysid\":\"rest\",\"type\":\"string\",\"searchType\":\"input\",\"searchDataType\":\"\",\"searchInfo\":\"\"}'>一级部门</option><option value='{\"key\":\"scname\",\"sysid\":\"rest\",\"type\":\"string\",\"searchType\":\"input\",\"searchDataType\":\"\",\"searchInfo\":\"\"}'>部门名称</option><option value='{\"key\":\"username\",\"sysid\":\"rest\",\"type\":\"string\",\"searchType\":\"input\",\"searchDataType\":\"\",\"searchInfo\":\"\"}'>员工名称</option><option value='{\"key\":\"cardNumber\",\"sysid\":\"rest\",\"type\":\"string\",\"searchType\":\"input\",\"searchDataType\":\"\",\"searchInfo\":\"\"}'>卡号</option></select><select id='selexperee' class='form-control'><option value="=">等于</option><option value="like">包含</option><option value="in">分组</option></select><input id='selvalue'  class='form-control' type='input' value='' /></div>
+											<div class="btn-group" 
+                                                >
+												<button type="button" class="btn btn-default querybutton" onclick="_exportExcel();"><i class="glyphicon glyphicon-export" style="color:rgb(0, 0, 0)"></i>导出Excel</button>
+													</div>
+											<div class="queryButtonGroup">
+												<button id="searchButton" type="button" class="btn btn-primary" onclick="submitForm();">查询</button>
+											</div>
+										</div>
+									</div>
+								<!--  End查询条  -->	
+								<table id="dataTable" class="queryTable" data-toggle="table" data-show-columns="false" data-undefined-text="" data-height="284" data-mobile-responsive="false" >
+									<thead>
+											<tr class='ui-jqgrid-labels'>
+<th class="ui-th-column ui-th-ltr" data-width="60px" w="60" width="60px" >选择</th>
+<th class='ui-th-column ui-th-ltr' data-width="60px" w="60" width="60px" >序号</th>
+<th data-field='name_${row.code}' data-visible='true' data-width="200px" width='200px' w='200' style='text-align:center;' class='ui-th-column ui-th-ltr'>
+<table class="queryTable"><thead><tr><th colspan="2">部门</th></tr><tr><th>一级部门</th><th>二级部门</th></tr></thead></table>
+</th>
+<th data-field='scname_${row.code}' data-visible='true' data-width="100px" width='100px' w='100' style='text-align:center;' class='ui-th-column ui-th-ltr'>部门名称</th>
+<th data-field='cardNumber_${row.code}' data-visible='true' data-width="100px" width='100px' w='100' style='text-align:center;' class='ui-th-column ui-th-ltr'>卡号</th>
+<th data-field='username_${row.code}' data-visible='true' data-width="100px" width='100px' w='100' style='text-align:center;' class='ui-th-column ui-th-ltr'>员工名称</th>
+<th data-field='RE_201703051736510001_${row.code}' data-visible='true' data-width="100px" width='100px' w='100' style='text-align:center;' class='ui-th-column ui-th-ltr'>RE_201703051736510001</th>
+<th data-field='eatdate_${row.code}' data-visible='true' data-width="100px" width='100px' w='100' style='text-align:center;' class='ui-th-column ui-th-ltr'>用餐时间</th>
+</tr>
+									</thead>
+									<tbody id="dataBody">
+										</tbody>
+								</table>
+							 <!-- 分页标签  -->
+								 <!-- 分页标签  -->
+    <div class="pagination">
+<div class="pagination_left">
+&nbsp;共<strong>0</strong>项<strong>当前:1</strong>页
+</div><div class="pagination_right"><span class="disabled">&laquo;&nbsp;上一页</span>
+<a href="javascript:changePage(2)">下一页&nbsp;&raquo;</a>
+<span>共 0页</span></div>
+</div>
+
+</form>
+                                                                                      <iframe name="_iquery" style="display:none;"></iframe> 
+<form id="pageExcelForm" action="/CommonWebInfo/platform/query/SQ_2017121815080001.query" target="_iquery" method="post">
+</form>
+																						</div>
+
+								</div>
+								</div>
+                              
+                        </div>
+                        
+
+						</div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+ 
+</body></html>

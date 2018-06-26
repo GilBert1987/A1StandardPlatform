@@ -1,0 +1,237 @@
+﻿<html>
+<head>
+<title>Java Large File Uploader Demo</title>
+<link href="./css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<script src="./js/jquery.js"></script>
+<script src="./js/jquery-ui.min.js"></script>
+<script src="./js/javalargefileuploader.js"></script>
+<script type="text/javascript">
+	function showMsg(){
+		var jsonObj;
+		jsonObj={"location":window.location.href,"action":$("#formPage").attr("action")};
+		alert(JSON.stringify(jsonObj));
+	}
+            $(document).ready(function () {
+                //construct object
+                jlfu = new JavaLargeFileUploader();
+		jlfu.setGlobalServletMapping("platform/upload/javaLargeFile");
+		jlfu.setUploadServletMapping("platform/upload/javaLargeFileAsync");
+                //call the initializing function
+				jlfu.initialize(function (pendingFiles) {},function(message){alert(message);});
+				/*
+                jlfu.initialize(function (pendingFiles) {
+                    //iterate over all the pending files
+                    for (key in pendingFiles) {
+                        var pendingFile = pendingFiles[key];
+
+                        //create a control element for each of them
+                        //appendUploadControls(pendingFile.id);
+
+                        //if the file is complete
+                        if (pendingFile.fileComplete) {
+                            //specify it in the em element
+                            //document.getElementById(pendingFile.id).children[0].textContent = "文件 '" + pendingFile.originalFileName + "' 已被完全上传 (" + pendingFile.fileCompletion + "/" + pendingFile.originalFileSize + ").";
+                            deleteElementsButEmAndCancel(pendingFile.id);
+                        }
+                        //else if incomplete and pending 
+                        else if (pendingFile.fileCompletion) {
+
+                            //describe the file so that the user can select it again
+                            //document.getElementById(pendingFile.id).children[0].textContent = "文件 '" + pendingFile.originalFileName + "' 已部分上传 (" + pendingFile.fileCompletion + "/" + pendingFile.originalFileSize + "). 重新选择它继续上传或取消.";
+
+                            //set progress in progress bar
+                            $("#" + pendingFile.id).children(".progressbar").progressbar({
+                                value: Math.floor(pendingFile.percentageCompleted)
+                            });
+                            //set if there is a rate configured
+                            if (pendingFile.rateInKiloBytes) {
+                                //document.getElementById(pendingFile.id).children[2].value = pendingFile.rateInKiloBytes;
+                            }
+
+                        }
+
+                    }
+
+                }, function (message) {
+                    alert(message);
+                });
+				*/
+                //specify some configuration
+                //jlfu.setMaxNumberOfConcurrentUploads(3);
+                //jlfu.getErrorMessages()[9] = "超过3个挂起的上传，文件是排队.";
+
+                //add a file upload element
+                appendFileInputElement();
+
+            });
+
+            function getFileId(element) {
+                return element.parentElement.id;
+            }
+
+            function appendFileInputElement() {
+
+                //get handle to main container
+                var mainContainer = document.getElementById('fileContainer');
+
+                //hide the last children
+                if (mainContainer.children.length > 0) {
+                    mainContainer.children[mainContainer.children.length - 1].hidden = true;
+                }
+
+                //generate a new file input control
+                var fileInput = document.createElement("input");
+                fileInput.type = "file";
+                fileInput.setAttribute('multiple', 'multiple');
+                mainContainer.appendChild(fileInput);
+
+                //add a listener
+                fileInput.addEventListener("change", function (e) {
+
+                    //hide the fileupload and append a new one
+                    appendFileInputElement();
+
+                    //process the file upload
+                    jlfu.fileUploadProcess(e.target,
+
+                    //define a start callback to create the UI that will interact with the file upload
+                    function (pendingFile, origin) {
+                        appendUploadControls(pendingFile.id);
+                    },
+
+                    //define a progressCallback to show the progress in the em elements 
+                    function (pendingFile, percentageCompleted, uploadRate, estimatedRemainingTime, origin) {
+                        document.getElementById(pendingFile.id).children[0].textContent = "上传 " + pendingFile.originalFileName + " ... (" + percentageCompleted + "% 完成) " + uploadRate + " 当前每秒 剩下" + estimatedRemainingTime;
+                        $("#" + pendingFile.id).children(".progressbar").progressbar({
+                            value: Math.floor(percentageCompleted)
+                        });
+                    },
+
+                    //define a finishCallback showing the completion in the em element 
+                    function (pendingFile, origin) {
+                        document.getElementById(pendingFile.id).children[0].textContent = "上传 " + pendingFile.originalFileName + " (" + pendingFile.originalFileSize + ") 完成";
+                        deleteElementsButEmAndCancel(pendingFile.id);
+                    },
+
+                    //define an exception callback
+					// pending file object that can be null! if null, it is a general error 
+                    function (message, origin, pendingFile) {
+                        if (pendingFile) {
+                            document.getElementById(pendingFile.id).children[0].textContent = message;
+                        } else {
+                            document.getElementById("error").textContent = message;
+                        }
+                    });
+
+                }, false);
+            }
+
+            function deleteElementsButEmAndCancel(fileId) {
+                var div = $('#' + fileId);
+                var em = div.children(":first").detach();
+                var cancel = div.children(".cancel").detach();
+                div.empty();
+                div.append(em);
+                div.append(cancel);
+                div.append(document.createElement('hr'));
+            }
+
+            function appendUploadControls(fileId) {
+
+                //get the ui container
+                var uiContainer = document.getElementById('uiContainer');
+
+                //append a div
+                var div = document.createElement("div");
+                div.setAttribute('id', fileId);
+                uiContainer.appendChild(div);
+
+                ////
+                //create the controls
+
+                //progress bar
+                var progressBar = document.createElement("div");
+                progressBar.setAttribute("class", "progressbar");
+                progressBar.setAttribute("style", "height:20px;");
+
+                // rate input
+                var rateInput = document.createElement("input");
+                rateInput.type = "text";
+
+                // rate button
+                var rateButton = document.createElement("button");
+                rateButton.addEventListener("click", function (e) {
+                    jlfu.setRateInKiloBytes(getFileId(this), this.parentElement.children[2].value);
+                });
+                rateButton.appendChild(document.createTextNode('Apply'));
+
+                // cancel link
+                var cancel = document.createElement("A");
+                cancel.setAttribute("href", "javascript:void(0);");
+                cancel.setAttribute("class", "cancel");
+                cancel.addEventListener("click", function (e) {
+                    div.children[0].textContent = "取消上传...";
+                    jlfu.cancelFileUpload(getFileId(this), function (pendingFileId) {
+                        var div = document.getElementById(pendingFileId);
+                        div.parentElement.removeChild(div);
+                    });
+                });
+                cancel.appendChild(document.createTextNode('取消'));
+
+                // pause link
+                var pause = document.createElement("A");
+                pause.setAttribute("href", "javascript:void(0);");
+                pause.addEventListener("click", function (e) {
+                    div.children[0].textContent = "暂停...";
+                    jlfu.pauseFileUpload(getFileId(this), function (pendingFile) {
+                        div.children[0].textContent = pendingFile.originalFileName + " 暂停上传.";
+                    });
+                });
+                pause.appendChild(document.createTextNode('Pause'));
+
+                // resume link
+                var resume = document.createElement("A");
+                resume.setAttribute("href", "javascript:void(0);");
+                resume.addEventListener("click", function (e) {
+                    div.children[0].textContent = "恢复上传...";
+                    jlfu.resumeFileUpload(getFileId(this), function (pendingFile) {
+                        div.children[0].textContent = "恢复中 " + pendingFile.originalFileName + " ...";
+                    });
+                });
+                resume.appendChild(document.createTextNode('Resume'));
+
+
+                ////
+                //append the controls to the div
+                div.appendChild(document.createElement("em"));
+                div.appendChild(progressBar);
+                div.appendChild(document.createTextNode('限制上传速率 '));
+                div.appendChild(rateInput);
+                div.appendChild(document.createTextNode(' KB '));
+                div.appendChild(rateButton);
+                div.appendChild(document.createTextNode(' | '));
+                div.appendChild(pause);
+                div.appendChild(document.createTextNode(' | '));
+                div.appendChild(resume);
+                div.appendChild(document.createTextNode(' | '));
+                div.appendChild(cancel);
+                div.appendChild(document.createElement('hr'));
+
+
+            }
+        </script>
+</head>
+
+<body>
+<form id="formPage" action="../../a.html">
+<!--<iframe style="width:100%;height:100%;border:0;">-->
+	<div id="fileContainer"></div>
+<!--</iframe>-->
+<hr>
+<div id="uiContainer"></div>
+<div> <a href='javascript:void(0)' onclick='jlfu.pauseAllFileUploads();'>Pause all</a> <a href='javascript:void(0)' onclick='jlfu.resumeAllFileUploads();'>Resume all</a> <a href='javascript:void(0)' onclick='jlfu.clearFileUpload(function(e) {window.location.reload();});'>Clear all</a> </div>
+<em id="error"></em>
+<button id="cltBtn" onClick="showMsg();" type="button">显示</button>
+<form>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://commonplatform.com/1.0/form.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="form">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="controls"/>
+        <xs:element ref="dynamicparm"/>
+        <xs:element ref="jsinfo"/>
+        <xs:element ref="include"/>
+        <xs:element ref="dynamicform"/>
+        <xs:element ref="hiddenform"/>
+        <xs:element ref="buttons"/>
+        <xs:element ref="authoritys"/>
+        <xs:element ref="remark"/>
+      </xs:sequence>
+      <xs:attribute name="code" use="required" type="xs:NCName"/>
+      <xs:attribute name="dataname" use="required" type="xs:NCName"/>
+      <xs:attribute name="datatype" use="required" type="xs:NCName"/>
+      <xs:attribute name="filedir" use="required" type="xs:NCName"/>
+      <xs:attribute name="lastmodifiedtime" use="required" type="xs:integer"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="showbutton" use="required" type="xs:integer"/>
+      <xs:attribute name="showformname" use="required" type="xs:integer"/>
+      <xs:attribute name="sysid" use="required" type="xs:NCName"/>
+      <xs:attribute name="title" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="controls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="control"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dynamicparm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="parm"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="jsinfo">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="include">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tag"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tag" type="xs:string"/>
+  <xs:element name="dynamicform" type="xs:string"/>
+  <xs:element name="hiddenform">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="hiddenInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hiddenInfo" type="xs:string"/>
+  <xs:element name="buttons">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="button"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="button">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="clientfunction"/>
+        <xs:element ref="firefunction"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="tag" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="clientfunction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="function"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="function" type="xs:string"/>
+  <xs:element name="firefunction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="class"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="class">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="method"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="method">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="parm"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="authoritys">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="authority"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="authority">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="control"/>
+      </xs:sequence>
+      <xs:attribute name="code" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="remark">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="control">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="show"/>
+      </xs:sequence>
+      <xs:attribute name="dataBind" type="xs:NCName"/>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="type" type="xs:NCName"/>
+      <xs:attribute name="value" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="show">
+    <xs:complexType>
+      <xs:attribute name="authinfo" use="required"/>
+      <xs:attribute name="authtype" use="required" type="xs:integer"/>
+      <xs:attribute name="showtype" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="parm">
+    <xs:complexType>
+      <xs:attribute name="key" type="xs:NCName"/>
+      <xs:attribute name="name"/>
+      <xs:attribute name="value" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

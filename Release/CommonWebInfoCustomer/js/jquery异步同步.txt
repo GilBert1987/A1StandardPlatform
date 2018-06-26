@@ -1,0 +1,47 @@
+/*
+			$('input[type="file"]').each(function(index, ele) {
+				if(null!=ele.value && ""!=ele.value)
+				{
+					fCount+=1;
+				}
+			});
+			dtd = $.Deferred();
+			wait = function(dtd){
+				var tasks;
+				var count;
+				tasks = function(){
+					console.log("check");
+					count=$("#_uplodeCount").val();
+					fLoadCount=Number(count);
+					if(fCount==fLoadCount)
+					{
+						$("#_uplodeSubmit").val("1");
+					}
+					dtd.resolve();
+				};
+				setTimeout(tasks(),2000);
+				return dtd.promise();
+			};
+			if("0"==$("#_uplodeStatus").val())
+			{
+				upload = $.Deferred();
+				waitload = function(upload){
+					var uploadtask;
+					uploadtask = function(){
+						upload.resolve();
+					};
+					setTimeout(uploadtask(),1000);
+					return upload.promise();
+				};
+				//waitload(upload).done(function(){console.log("upload run")});
+				$('input[type="file"]').each(function(index, ele) {
+					if(null!=ele.value && ""!=ele.value)
+					{
+						jlfu.fileUploadProcess(ele,fn_uploadbegin,fn_uploading,fn_uploadfinish,fn_uploaderror);
+						fCount+=1;
+					}
+				});
+				$("#_uplodeStatus").val("1");
+			}
+			wait(dtd).done(function(){$("#"+btnId).click();});
+			*/

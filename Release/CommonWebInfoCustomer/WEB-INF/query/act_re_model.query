@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<query name="流程定义列表" filedir="page" title="流程定义" head="流程定义列表" code="act_re_model" sysid="wf" datatype="sql" lastmodifiedtime="1436148170000"><sqlinfo>SELECT ID_,REV_,NAME_,KEY_,META_INFO_,CREATE_TIME_,LAST_UPDATE_TIME_,
+		VERSION_,DEPLOYMENT_ID_
+		FROM act_re_model</sqlinfo><defaultparm value=""/><primarykey key="ID_" type="1"/><orderkey value="ID_"/><initsql type="0"></initsql><choicetime type="0" pagenum="30"/><pagestyle type="1"><show type="1" isshow="0"/><show type="2" isshow="1"/><show type="3" isshow="1"/><show type="4" isshow="1"/><show type="5" isshow="1"/><show type="6" isshow="1"/><show type="7" isshow="1"/><show type="8" isshow="1"/><show type="9" isshow="0"/></pagestyle><jsfunction>&lt;script type="text/javascript"&gt;
+			function deploy(){
+				var strKey;
+				var strDeployment;
+				strKey=fn_getchecked("ID_");
+				strDeployment=fn_getchecked("DEPLOYMENT_ID_");
+				strDeployment=(strDeployment==null?'':strDeployment);
+				if(strKey !=null &amp;&amp; strKey !='')
+				{
+					if(strDeployment !='')
+					{
+						if(confirm("是否部署版本?")==true)
+						{
+							deployWorkFlow('../../workflow/deploy/'+strKey);
+						}
+					}
+					else
+					{
+						deployWorkFlow('../../workflow/deploy/'+strKey);
+					}
+				}
+			}
+			
+			function deployWorkFlow(urlInfo)
+			{
+				var msgInfo;
+				$.ajax({
+					url:urlInfo,
+					type:'GET',
+					dataType:'json',
+					success:function(msg){
+						msgInfo=$.parseJSON(msg);
+						if(msgInfo.msg==true)
+						{
+							alert('部署成功!');
+							window.location.reload();
+						}
+					},
+					error:function(request, status, error){
+						alert(error);
+					}
+				});
+			}
+			function openmodel(){
+				var strKey;
+				strKey=fn_getchecked("ID_");
+				if(strKey !=null &amp;&amp; strKey !='')
+				{
+					window.location='../../widgets/modeler/editor.html?id='+strKey;
+				}
+			}
+			function newmodel(){
+				window.location='../form/act_re_model.form';
+			}
+		&lt;/script&gt;</jsfunction><columns><column key="ID_" name="主键" type="string" grouptype="0"><search isshow="0" order="1" type="input" datatype=""></search><title isshow="0" order="1" isedit="0" width="20"/><unit merge="0" mergerefer="" mergecolumn="" align="left"/><quick isshow="0" showname="0" showoperation="0"/></column><column key="REV_" name="REV_" type="string" grouptype="0"><search isshow="1" order="2" type="input" datatype=""></search><title isshow="1" order="2" isedit="0" width="20"/><unit merge="0" mergerefer="" mergecolumn="" align="right"/><quick isshow="0" showname="0" showoperation="0"/></column><column key="KEY_" name="英文编码" type="string" grouptype="0"><search isshow="1" order="3" type="input" datatype="sql"></search><title isshow="1" order="3" isedit="0" width="15"/><unit merge="0" mergerefer="0" mergecolumn="" align="left"/><quick isshow="0" showname="1" showoperation="0"/></column><column key="NAME_" name="流程名称" type="string" grouptype="0"><search isshow="1" order="3" type="input" datatype="sql"></search><title isshow="1" order="3" isedit="0" width="15"/><unit merge="0" mergerefer="0" mergecolumn="" align="left"/><quick isshow="0" showname="1" showoperation="0"/></column><column key="META_INFO_" name="描述" type="string" grouptype="0"><search isshow="1" order="3" type="input" datatype="sql"></search><title isshow="1" order="3" isedit="0" width="15"/><unit merge="0" mergerefer="0" mergecolumn="" align="left"/><quick isshow="0" showname="1" showoperation="0"/></column><column key="DEPLOYMENT_ID_" name="发布ID" type="string" grouptype="0"><search isshow="0" order="4" type="input" datatype="sql"></search><title isshow="1" order="5" isedit="0" width="10"/><unit merge="0" mergerefer="" mergecolumn="" align="left"/><quick isshow="0" showname="0" showoperation="0"/></column></columns><buttons><button name="新建" icon="../../img/button/application_edit.png" order="1" jsclick="newmodel();"/><button name="编辑" icon="../../img/button/application_edit.png" order="2" jsclick="openmodel();"/><button name="部署" icon="../../img/button/application_edit.png" order="3" jsclick="deploy();"/></buttons><remark></remark></query>

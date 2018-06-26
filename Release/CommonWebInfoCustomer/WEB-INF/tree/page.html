@@ -1,0 +1,50 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<link rel="stylesheet" type="text/css" href="../../css/zTreeStyle/zTreeStyle.css" />
+	<link href="../../css/bootstrap.min.css?v=1.001" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="../../css/jquery-webox.css" />
+	<link rel="shortcut icon" href="../../assets/img/favicon.png" type="image/x-icon">
+	<link href="../../css/usesofont.css" rel="stylesheet" type="text/css">
+	<link href="../../css/tree.css?ver=1.01" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/layer/layer.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/slimscroll/jquery.slimscroll.min.js" ></script>
+	<script type="text/javascript" src="../../js/jquery-webox.js"></script>
+	<script type="text/javascript" src="../../js/jquery.ztree.core-3.5.js"></script>
+	<script type="text/javascript" src="../../js/jquery.ztree.excheck-3.5.js"></script>
+	<script type="text/javascript" src="../../js/jquery.ztree.exedit-3.5.js"></script>
+	<script type="text/javascript" src="../../js/jquery.ztree.exhide-3.5.js"></script>
+    <script type="text/javascript" src="../../js/jquery.ztree.exajax-3.5.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/tree.js"></script>
+    <title>{titlename}</title>
+    {jstag}
+</head>
+<body>
+<div class="treebody">
+<div class="treelist">
+<form id="pageForm" action="${requestScope._urlInfo}" method="post">
+	<input id="treeViewPath" type="hidden" value="${requestScope._viewpath}" />
+	<textarea id="treeData" style="display:none;">${requestScope._listhtml}</textarea>
+	<textarea id="treeObj" style="display:none;">${requestScope._treenodeobj}</textarea>
+	<textarea id="treeUrl" style="display:none;">${requestScope._urlparam}</textarea>
+	<div id="toolButton">
+		
+	</div>
+	<div id="dataTree" class="ztree">
+		
+	</div>
+</form>
+</div>
+</div>
+</body>
+</html>

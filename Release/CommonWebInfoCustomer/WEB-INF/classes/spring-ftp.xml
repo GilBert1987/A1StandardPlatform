@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+	default-lazy-init="true">
+	<bean id="ftpConfigure" class="com.common.ftp.config.FTPClientConfigure">
+		<property name="host" value="${ftp.host}" />
+		<property name="port" value="${ftp.port}" />
+		<property name="username" value="${ftp.username}" />
+		<property name="password" value="${ftp.password}" />
+	</bean>
+	<!--
+	<bean id="ftpClientFactory" class="com.common.ftp.factory.FtpClientFactory">
+		<property name="config" ref="ftpConfigure" />
+	</bean>
+	
+	<bean id="ftpClientPool" class="com.common.ftp.pool.FTPClientPool">
+		<constructor-arg ref="ftpClientFactory" />
+	</bean>
+	-->
+	<bean id="ftpUtil" class="com.common.ftp.util.FTPUtil">
+	</bean>
+</beans>

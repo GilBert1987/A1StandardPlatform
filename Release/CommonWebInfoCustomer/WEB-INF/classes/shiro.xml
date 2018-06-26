@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro安全配置</description>
+	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shirodbRealm" />  
+	</bean>
+
+	<!--自定义Realm 继承自AuthorizingRealm -->  
+    <bean id="shirodbRealm" class="com.common.security.shiro.ShiroDbRealm">
+    	<property name="userService" ref="userService" /> 
+    	<property name="userRoleService" ref="userRoleService" />  
+    </bean>
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/success" />
+		<!-- 未授权时要跳转的连接 -->  
+		<property name="unauthorizedUrl" value="/unauthorized" />
+		<property name="filters">
+	        <map>
+	        	 <entry key="authc" value-ref="baseFormAuthenticationFilter"/>
+	        	 <!-- 是否启用验证码检验-->
+	             <entry key="authc" value-ref="captchaFormAuthenticationFilter"/>
+				 <entry key="role" value-ref="roleAuthorizationFilter"></entry>  
+	        </map>
+        </property>
+	</bean>
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	<bean id="captchaFormAuthenticationFilter" class="com.common.security.shiro.CaptchaFormAuthenticationFilter"/>
+	<bean id="baseFormAuthenticationFilter" class="com.common.security.shiro.BaseFormAuthenticationFilter"/>
+	<bean id="roleAuthorizationFilter" class="com.common.security.shiro.RoleAuthorizationFilter"/>
+	<!-- 权限资源配置 -->
+	<!--/** = user-->
+	<bean id="filterChainDefinitionsService" class="com.common.service.impl.FilterChainDefinitionsServiceImpl" init-method="intiPermission" >
+		<property name="definitions">
+			<value>
+				/login = authc
+				/logout = logout
+				/data/** = anon
+				/js/** = anon
+				/css/** = anon
+				/img/** = anon
+				/project/** = anon
+				/test.html = anon
+				/success = user
+		 	</value>
+		</property>
+		<property name="lastPermission">
+			 <map>
+				<entry key="/platform/**" value="user"></entry>
+			</map>
+		</property>
+    </bean>
+</beans>

@@ -1,0 +1,210 @@
+body{
+	font-family: '微软雅黑';
+}
+.gray-bg {
+	background-color: #eee;
+}
+.pagination{
+	width:100%;
+	margin:10px 0px 0px 0px;
+}
+.pagination_left{
+	width:40%;
+	float:left;
+	text-align:left;
+}
+.pagination_right{
+	width:60%;
+	float:right;
+	text-align:right;
+}
+.ibox-content{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.wrapper-content{
+	padding:0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-left-width: 20px;
+    border-right-width: 20px;
+}
+.widgetQuery h4{
+    margin-bottom: 0px;
+    margin-top: 2px;
+	float:left;
+}
+.queryButtonGroup{
+	float:right;
+	margin-top: 1px;
+    padding-top: 0px;
+    padding-right: 5px;
+	margin-bottom: 1px;
+}
+.widget-header[class*="bg-"] {
+    border: 0;
+}
+.widget-header {
+	margin-top: 15px;
+    position: relative;
+    min-height: 35px;
+    background: #fff;
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,.3);
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    color: #555;
+    padding-left: 12px;
+}
+.widget-header[class*="bg-"] .widget-caption, .widget-header[class*="bg-"] i {
+    color: #fff;
+}
+.widget-header>.widget-caption {
+    line-height: 34px;
+    padding: 0;
+    margin: 0;
+    float: left;
+    text-align: left;
+    font-weight: 400!important;
+    font-size: 14px;
+}
+.bg-blue {
+    background-color: #5db2ff!important;
+}
+.searchQuickItem input{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-top-width: 1.11;
+    border-bottom-width: 1.11;
+    border-top-width: 1.11;
+    margin-top: 7px;
+    margin-bottom: 15px;
+}
+.searchItem>.form-group{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+#pageBody{
+    background: rgba(0,0,0,.55);
+    margin-bottom: 0px;
+}
+.ibox-content{
+	background-color: #eee;
+}
+.bootstrap-table{
+	background-color: #fff;
+}
+.bootstrap-table{
+
+}
+.btn-default:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.btn, .btn-default, .btn:focus, .btn-default:focus {
+    color: #444;
+    background-color: #fff;
+    border-color: #ccc;
+	font-size:13px;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
+.btn-primary, .btn-primary:focus {
+    background-color: #427fed!important;
+    border-color: #427fed;
+    color: #fff;
+}
+.btn-success:hover {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+.btn-success, .btn-success:focus {
+    background-color: #53a93f!important;
+    border-color: #53a93f!important;
+    color: #fff;
+}
+.btn-info:hover {
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #269abc;
+}
+.btn-info, .btn-info:focus {
+    background-color: #57b5e3!important;
+    border-color: #57b5e3;
+    color: #fff;
+}
+.btn-warning:hover {
+    color: #fff;
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+.btn-warning, .btn-warning:focus {
+    background-color: #f4b400!important;
+    border-color: #f4b400;
+    color: #fff;
+}
+.btn-danger:hover {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+.btn-danger, .btn-danger:focus {
+    background-color: #d73d32!important;
+    border-color: #d73d32;
+    color: #fff;
+}
+.table:not(.table-condensed), .bootstrap-table .table:not(.table-condensed)>tbody>tr>td, .bootstrap-table .table:not(.table-condensed)>tbody>tr>th, .bootstrap-table .table:not(.table-condensed)>tfoot>tr>td, .bootstrap-table .table:not(.table-condensed)>tfoot>tr>th, .bootstrap-table .table:not(.table-condensed)>thead>tr>td {
+    padding: 6px;
+}
+.hiddenCol{
+	display:none;
+}
+.queryTable {
+   table-layout: fixed;
+   width: 98% border:0px;   
+   margin: 0px;   
+}
+.queryTable tr td {   
+    text-overflow: ellipsis; /* for IE */  
+    -moz-text-overflow: ellipsis; /* for Firefox,mozilla */  
+    overflow: hidden;   
+    white-space: nowrap;  
+}
+.data_left{
+	text-align:left;
+}
+.data_center{
+	text-align:center;
+}
+.data_right{
+	text-align:right;
+}
+.ui-th-column{
+	text-align:center;
+}
+.bootstrap-table .table thead>tr>th{
+	margin-right:6px;
+}
+.fixed-table-container thead tr .rightcol{
+    border-left:0px;
+}
+.fixed-table-container thead .querymutil{
+    height:0px;
+    border-left: 0px;
+}
+.fixed-table-container tbody td .th-inner, .fixed-table-container thead th .th-inner {
+    padding: 4px;
+    line-height: 24px;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.fixed-table-container tbody td .th-inner, .fixed-table-container thead .querymutil .th-inner{
+    height:0px;
+    padding:0px;
+}

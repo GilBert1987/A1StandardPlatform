@@ -1,0 +1,98 @@
+/*CONTENTTABS*/
+nav.page-tabs .page-tabs-content {
+    float: left;
+}
+.main-content {
+    overflow-x: hidden;
+}
+.content-tabs {
+    left: 0px;
+    position: relative;
+    height: 42px;
+    background: #fafafa;
+    line-height: 40px;
+    border-bottom: solid 2px #2f4050;
+}
+.content-tabs .roll-nav,
+.page-tabs-list {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: #999;
+    z-index: 2;
+    top: 0;
+}
+nav.page-tabs {
+    margin-left: 40px;
+    width: 100000px;
+    height: 40px;
+    overflow: hidden;
+}
+.content-tabs .roll-left {
+    left: 5px;
+    border-right: solid 1px #eee;
+}
+
+.content-tabs .roll-right {
+    right: 0;
+    border-left: solid 1px #eee;
+}
+
+.content-tabs button {
+    background: #fff;
+    border: 0;
+    height: 40px;
+    width: 40px;
+    outline: none;
+}
+
+.content-tabs button:hover {
+    background: #fafafa;
+}
+.content-tabs .roll-nav:hover {
+    color: #777;
+    background: #f2f2f2;
+    cursor: pointer;
+}
+.roll-right.J_tabRight {
+    right: 80px;
+}
+.roll-right.J_tabExit {
+    background: #fff;
+    height: 40px;
+    width: 60px;
+    right: 20px;
+    outline: none;
+}
+.roll-right.btn-group button {
+    width: 80px;
+}
+.UL_tabClose{
+    left: -90px;
+}
+#content-main {
+    height: calc(100% - 120px);
+    overflow: hidden;
+}
+.page-tabs a {
+    color: #999;
+    display: block;
+    float: left;
+    border-right: solid 1px #eee;
+    padding: 0 15px;
+    text-decoration:none;
+}
+.page-tabs a.active {
+    background: #2f4050;
+    color: #a7b1c2;
+}
+.page-tabs a.active:hover,
+.page-tabs a.active i:hover {
+    background: #293846;
+    color: #fff;
+}
+.J_menuTab {
+    -webkit-transition: all .3s ease-out 0s;
+    transition: all .3s ease-out 0s;
+}
