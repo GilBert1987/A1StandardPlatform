@@ -38,7 +38,7 @@
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 * QQ群:813071216
-* 邮件(jerry.sun#trustfu.com, 把#换成@)
+* 邮件(tts4#163.com, 把#换成@)
 
 
 ##捐助开发者
@@ -47,6 +47,5 @@
 
 
 ##关于作者
-* Title:创付科技 CTO 
-* Mail:jerry.sun#trustfu.com
+* Mail:tts4#163.com
 * Made By China
