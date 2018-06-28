@@ -53,6 +53,12 @@
 当然，有钱捧个钱场（支付宝tts4@163.com），没钱捧个人场，谢谢各位。
 
 
+##OpenChina 链接<br>
+[A1StandardPlatform]
+
+
 ##关于作者
 * Mail:tts4#163.com
 * Made By China
+
+[A1StandardPlatform]:https://www.oschina.net/p/A1StandardPlatform
