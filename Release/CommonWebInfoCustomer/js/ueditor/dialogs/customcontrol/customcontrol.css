@@ -1,8 +1,0 @@
-#box{width:100%;font-size:12px}  
-#box ul{margin:0;padding:0;list-style:none}
-#box #tab{height:26px;border-bottom:1px solid #dfdfdf}  
-#box #tab li{width:100px;height:18px;padding-top:8px;margin-right:10px;text-align:center;float:left;cursor:pointer;position:relative;top:1px;}  
-#box #tab li.on{color:#00f;background-position:-110px 0}  
-#box #tab_con{border:1px solid #dfdfdf;border-top:none;height:220px;padding:20px}  
-#box #tab_con li{display:none}  
-#box #tab_con #tab_con_1{display:block}
